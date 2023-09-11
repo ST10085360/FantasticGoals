@@ -1,6 +1,5 @@
 package com.example.fantasticgoals
 
-import android.content.ContentValues
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -33,45 +32,4 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
-
-
-    private fun addGoal(goalTitle: String, goalDesc: String, isComplete: Boolean) {
-        val dbHelper = DbHelper(this) // 'this' refers to the current context
-        val db = dbHelper.writableDatabase
-
-        val contentValues = ContentValues()
-        contentValues.put("title", goalTitle)
-        contentValues.put("description", goalDesc)
-        contentValues.put("is_completed", if (isComplete) 1 else 0)
-
-        val result = db.insert("Goals", null, contentValues)
-        db.close()
-
-        if (result == -1L) {
-            // Insertion failed
-            // Handle error if needed
-        } else {
-            // Insertion successful
-            // Handle success if needed
-        }
-    }
-
-
-    private fun deleteGoal(goalId: Int) {
-        val dbHelper = DbHelper(this) // 'this' refers to the current context
-        val db = dbHelper.writableDatabase
-
-        val result = db.delete("Goals", "id=?", arrayOf(goalId.toString()))
-        db.close()
-
-        if (result == 0) {
-            // Deletion failed, no rows were affected
-            // Handle error if needed
-        } else {
-            // Deletion successful
-            // Handle success if needed
-        }
-    }
-
-
 }
