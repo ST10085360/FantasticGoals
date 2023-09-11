@@ -48,20 +48,26 @@ class MainActivity : AppCompatActivity(), AddGoalDialogFragment.AddGoalDialogLis
         sharedPref = getSharedPreferences("MODE", Context.MODE_PRIVATE)
         darkMode = sharedPref?.getBoolean("night", false)!!
 
-        if(darkMode){
+        // Check and set the dark mode based on the retrieved setting
+        if (darkMode) {
             modeSwitch.isChecked = true
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            modeSwitch.isChecked = false
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
 
         modeSwitch.setOnCheckedChangeListener{compoundButton, state ->
-            if(darkMode){
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                editor = sharedPref?.edit()
-                editor?.putBoolean("night", false)
-            }else{
+            if (state) {
+                // User switched to dark mode
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 editor = sharedPref?.edit()
                 editor?.putBoolean("night", true)
+            } else {
+                // User switched to light mode
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                editor = sharedPref?.edit()
+                editor?.putBoolean("night", false)
             }
             editor?.apply()
         }
