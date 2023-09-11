@@ -1,6 +1,6 @@
 package com.example.fantasticgoals
 
-import android.R
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +19,7 @@ public class GoalAdapter(goals: List<Goal>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val itemView = inflater.inflate(R.layout.goal_tile, parent, false)
-        return ViewHolder(itemView, this)
+        return ViewHolder(itemView)
     }
 
 
