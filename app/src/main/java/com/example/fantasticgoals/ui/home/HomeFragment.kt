@@ -4,37 +4,55 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.fantasticgoals.R
 import com.example.fantasticgoals.databinding.FragmentHomeBinding
+import com.example.fantasticgoals.ui.popup.AddGoal
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class HomeFragment : Fragment() {
 
+    private lateinit var recyclerView: RecyclerView
     private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var fabAddGoal: FloatingActionButton
+    private lateinit var goalAdapter : GoalAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        fabAddGoal = view.findViewById(R.id.fabAddGoal)
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        // Initialize the RecyclerView
+        recyclerView = view.findViewById(R.id.rvGoalsList)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        // Create an instance of the adapter
+        goalAdapter = GoalAdapter()
+
+        // Set the adapter to the RecyclerView
+        recyclerView.adapter = goalAdapter
+
+        // Call a function to populate the adapter with data
+
+
+        fabAddGoal.setOnClickListener {
+            showAddGoalPopup()
         }
-        return root
+
+        return view
+
     }
 
+    private fun showAddGoalPopup() {
+        val popup = AddGoal()
+        popup.show(parentFragmentManager, "AddGoalPopup")
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

@@ -1,0 +1,124 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="430dp"
+    android:layout_height="match_parent"
+    tools:context=".ui.popup.AddGoal">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="412dp"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:padding="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+                <!-- Popup Header -->
+                <LinearLayout
+                    android:layout_width="333dp"
+                    android:layout_height="73dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <!-- Popup Title -->
+                    <TextView
+                        android:layout_width="291dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Add Goal"
+                        android:textSize="34sp"
+                        android:textStyle="bold" />
+
+                    <!-- Close Button -->
+                    <ImageButton
+                        android:id="@+id/btnExit"
+                        android:layout_width="66dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_close_24" />
+
+                </LinearLayout>
+
+                <!-- Title Field -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Title"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="323dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/baseline_text_snippet_24" />
+
+                    <EditText
+                        android:id="@+id/txtTitle"
+                        android:layout_width="297dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter title"
+                        android:inputType="text" />
+                </LinearLayout>
+
+                <!-- Description Field -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Description" />
+
+                <LinearLayout
+                    android:layout_width="325dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/baseline_subject_24" />
+
+                    <EditText
+                        android:id="@+id/txtDescription"
+                        android:layout_width="298dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter description"
+                        android:inputType="textMultiLine" />
+                </LinearLayout>
+
+
+                <!-- Save Button -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/btnSave"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/black"
+                        android:text="Save" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</FrameLayout>
