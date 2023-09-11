@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fantasticgoals.R
 class GoalViewHolder(
     itemView: View,
-    private val adapter: goalAdapter
+    private val adapter: GoalAdapter
 ) : RecyclerView.ViewHolder(itemView) {
     private val goalTitle: TextView = itemView.findViewById(R.id.txtTitle)
     private val goalDescription: TextView = itemView.findViewById(R.id.txtDescription)
