@@ -2,9 +2,13 @@ package com.example.fantasticgoals
 
 import android.app.Dialog
 import android.content.ContentValues
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.SwitchCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -17,6 +21,11 @@ class MainActivity : AppCompatActivity(), AddGoalDialogFragment.AddGoalDialogLis
     private lateinit var binding: ActivityMainBinding
     private lateinit var addGoalPopup: Dialog
     private lateinit var btnAddGoal: FloatingActionButton
+
+    private lateinit var modeSwitch: SwitchCompat
+    private var darkMode: Boolean = false
+    private var editor : SharedPreferences.Editor?=null
+    private var sharedPref: SharedPreferences?=null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +45,26 @@ class MainActivity : AppCompatActivity(), AddGoalDialogFragment.AddGoalDialogLis
             showAddGoalPopup()
         }
 
+        sharedPref = getSharedPreferences("MODE", Context.MODE_PRIVATE)
+        darkMode = sharedPref?.getBoolean("night", false)!!
 
+        if(darkMode){
+            modeSwitch.isChecked = true
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+
+        modeSwitch.setOnCheckedChangeListener{compoundButton, state ->
+            if(darkMode){
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                editor = sharedPref?.edit()
+                editor?.putBoolean("night", false)
+            }else{
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                editor = sharedPref?.edit()
+                editor?.putBoolean("night", true)
+            }
+            editor?.apply()
+        }
 
         val navView: BottomNavigationView = binding.navView
 

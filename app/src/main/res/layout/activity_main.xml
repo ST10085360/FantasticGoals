@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:paddingTop="?attr/actionBarSize">
+    android:paddingTop="?attr/actionBarSize"
+    android:background="?attr/colorOnPrimary">
     <!-- Top App Bar -->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -39,6 +40,28 @@
                 android:contentDescription="Profile Icon"
                 android:onClick="redirectToAccountPreferences"
                 android:src="@drawable/ic_profile" />
+            <!-- Light and Dark modes -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_light_mode_24">
+
+            </ImageView>
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/mode_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false">
+
+            </androidx.appcompat.widget.SwitchCompat>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_dark_mode_24">
+
+            </ImageView>
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
