@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity(), AddGoalDialogFragment.AddGoalDialogLis
         {
             showAddGoalPopup()
         }
-
+        modeSwitch = findViewById(R.id.mode_switch)
         sharedPref = getSharedPreferences("MODE", Context.MODE_PRIVATE)
         darkMode = sharedPref?.getBoolean("night", false)!!
 
