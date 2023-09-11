@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imageViewClose"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -17,26 +17,26 @@
         android:focusable="true" />
 
     <EditText
-        android:id="@+id/editTextTitle"
+        android:id="@+id/txtGoalTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Goal Title" />
 
     <EditText
-        android:id="@+id/editTextDescription"
+        android:id="@+id/txtGoalDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Goal Description" />
 
     <Spinner
-        android:id="@+id/spinnerIsComplete"
+        android:id="@+id/spnIsComplete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:entries="@array/is_complete_array" />
 
     <Button
-        android:id="@+id/buttonAddGoal"
+        android:id="@+id/btnAddGoal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
